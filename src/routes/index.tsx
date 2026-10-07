@@ -1,24 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
-
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
-export const Route = createFileRoute("/")({
-  component: Index,
-});
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { ArrowDown, ArrowUpRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { ProjectCard } from '@/components/portfolio/project-card';
+import { pageHead, projects } from '@/data/projects';
+import deskImage from '@/assets/editorial-desk.jpg';
+export const Route = createFileRoute('/')({ head: () => pageHead('Beatriz Ayade · Portfólio', 'Estudante de Engenharia de Software. Projetos e explorações em backend, inteligência artificial, dados, cloud e pesquisa.'), component: Index });
 function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
+ return <main><section className="hero"><img src={deskImage} width={1536} height={1024} className="hero-background" alt="Composição editorial com notebook, livro rosa, papel quadriculado e uma flor"/><div className="hero-inner"><div className="eyebrow"><span className="eyebrow-dot"/>PORTFÓLIO PESSOAL & ACADÊMICO-PROFISSIONAL</div><h1>Beatriz<br/><em>Ayade.</em></h1><p className="hero-description">Estudante de <strong>Engenharia de Software.</strong><br/>Construindo conexões entre código, dados<br className="hidden sm:block"/> e as pessoas do outro lado da tela.</p><div className="hero-interests">backend / inteligência artificial / dados / cloud</div><div className="hero-links"><Button asChild className="hero-button"><Link to="/projetos">Explorar projetos <ArrowDown size={14}/></Link></Button><a href="https://www.linkedin.com/in/beatriz-ayade/" target="_blank" rel="noreferrer" className="hero-social">LinkedIn <ArrowUpRight size={13}/></a><a href="https://github.com/btrizayade" target="_blank" rel="noreferrer" className="hero-social">GitHub <ArrowUpRight size={13}/></a></div></div><span className="hero-stamp">CURIOSIDADE EM CONSTRUÇÃO</span><div className="hero-annotation"><span>↖</span> código com intenção.</div></section><div className="interest-band"><div className="interest-band-inner"><span>ENGENHARIA DE SOFTWARE</span><span className="band-star">✳</span><span>BACKEND & IA</span><span className="band-star">✳</span><span>DADOS & CLOUD</span><span className="band-star">✳</span><span>PESQUISA & CURIOSIDADE</span></div></div><section className="page-container projects-section"><div className="section-heading"><div><div className="eyebrow">01 / CÓDIGO EM PRÁTICA</div><h2>Projetos <em>selecionados.</em></h2></div><Link to="/projetos" className="text-link">Todos os projetos <ArrowUpRight size={15}/></Link></div><div className="project-grid">{projects.map(project => <ProjectCard key={project.slug} project={project}/>)}</div></section><section className="mural-teaser"><div className="mural-teaser-inner"><div><div className="eyebrow">02 / PARA ALÉM DO CÓDIGO</div><h2>Um mural de <em>curiosidades.</em></h2><p>Leituras, ideias soltas e tecnologias em exploração. Um pequeno jardim de coisas que se conectam.</p><Link to="/mural" className="text-link">Dar uma volta no mural <ArrowUpRight size={15}/></Link></div><div className="teaser-papers" aria-label="Anotações sobre pesquisa e tecnologia"><div className="paper-note"><h3>entre uma ideia e outra...</h3><p>01. ler & questionar<br/>02. conectar pontos<br/>03. experimentar</p><span>♡</span></div><div className="paper-terminal"><div>● ● ● &nbsp; curiosity.py</div><p><em>&gt;</em> backend, dados & IA<br/><em>&gt;</em> ideias em movimento<br/><em>&gt;</em> sempre aprendendo<span className="terminal-cursor"/></p></div><span className="teaser-spark">✳</span></div></div></section></main>;
 }

@@ -8,3 +8,10 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Portfolio architecture
+- Shared portfolio navigation and footer are mounted in the root around Outlet so all content pages share consistent navigation.
+- Store project facts and metadata helpers in src/data/projects.ts so cards and case studies use one truthful source.
+- Use /projetos as an Outlet layout, its index as the listing, and /projetos/$slug as the case-study leaf so every case mounts correctly.
+- Keep the mural as a filterable frontend editorial page without persistence because it publishes curated content rather than collecting user data.
+- Define visual roles in src/styles.css and use semantic tokens throughout to keep the identity consistent.
