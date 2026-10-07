@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as MuralRouteImport } from './routes/mural'
+import { Route as ProjetosRouteImport } from './routes/projetos'
 import { Route as SobreRouteImport } from './routes/sobre'
 import { Route as ProjetosIndexRouteImport } from './routes/projetos.index'
 import { Route as ProjetosSlugRouteImport } from './routes/projetos.$slug'
@@ -25,15 +26,20 @@ const MuralRoute = MuralRouteImport.update({
   path: '/mural',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProjetosRoute = ProjetosRouteImport.update({
+  id: '/projetos',
+  path: '/projetos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SobreRoute = SobreRouteImport.update({
   id: '/sobre',
   path: '/sobre',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjetosIndexRoute = ProjetosIndexRouteImport.update({
-  id: '/projetos/',
-  path: '/projetos/',
-  getParentRoute: () => rootRouteImport,
+  id: '/',
+  path: '/',
+  getParentRoute: () => ProjetosRoute,
 } as any)
 const ProjetosSlugRoute = ProjetosSlugRouteImport.update({
   id: '/$slug',
@@ -44,6 +50,7 @@ const ProjetosSlugRoute = ProjetosSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/mural': typeof MuralRoute
+  '/projetos': typeof ProjetosRouteWithChildren
   '/sobre': typeof SobreRoute
   '/projetos/$slug': typeof ProjetosSlugRoute
   '/projetos/': typeof ProjetosIndexRoute
@@ -59,23 +66,32 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/mural': typeof MuralRoute
+  '/projetos': typeof ProjetosRouteWithChildren
   '/sobre': typeof SobreRoute
   '/projetos/$slug': typeof ProjetosSlugRoute
   '/projetos/': typeof ProjetosIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/mural' | '/sobre' | '/projetos/$slug' | '/projetos/'
+  fullPaths:
+    '/' | '/mural' | '/projetos' | '/sobre' | '/projetos/$slug' | '/projetos/'
   fileRoutesByTo: FileRoutesByTo
   to: '/' | '/mural' | '/sobre' | '/projetos/$slug' | '/projetos'
-  id: '__root__' | '/' | '/mural' | '/sobre' | '/projetos/$slug' | '/projetos/'
+  id:
+    | '__root__'
+    | '/'
+    | '/mural'
+    | '/projetos'
+    | '/sobre'
+    | '/projetos/$slug'
+    | '/projetos/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   MuralRoute: typeof MuralRoute
+  ProjetosRoute: typeof ProjetosRouteWithChildren
   SobreRoute: typeof SobreRoute
-  ProjetosIndexRoute: typeof ProjetosIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -94,6 +110,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MuralRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/projetos': {
+      id: '/projetos'
+      path: '/projetos'
+      fullPath: '/projetos'
+      preLoaderRoute: typeof ProjetosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sobre': {
       id: '/sobre'
       path: '/sobre'
@@ -103,10 +126,10 @@ declare module '@tanstack/react-router' {
     }
     '/projetos/': {
       id: '/projetos/'
-      path: '/projetos'
+      path: '/'
       fullPath: '/projetos/'
       preLoaderRoute: typeof ProjetosIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof ProjetosRoute
     }
     '/projetos/$slug': {
       id: '/projetos/$slug'
@@ -118,11 +141,25 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface ProjetosRouteChildren {
+  ProjetosSlugRoute: typeof ProjetosSlugRoute
+  ProjetosIndexRoute: typeof ProjetosIndexRoute
+}
+
+const ProjetosRouteChildren: ProjetosRouteChildren = {
+  ProjetosSlugRoute: ProjetosSlugRoute,
+  ProjetosIndexRoute: ProjetosIndexRoute,
+}
+
+const ProjetosRouteWithChildren = ProjetosRoute._addFileChildren(
+  ProjetosRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   MuralRoute: MuralRoute,
+  ProjetosRoute: ProjetosRouteWithChildren,
   SobreRoute: SobreRoute,
-  ProjetosIndexRoute: ProjetosIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
