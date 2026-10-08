@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { pageHead } from '@/data/projects';
 export const Route = createFileRoute('/mural')({ head: () => pageHead('Mural · Jardim de curiosidades', 'Um mural pessoal de Beatriz Ayade para reunir leituras, referências de IA e computação, tecnologias e notas.'), component: MuralPage });
-const filters = ['Tudo', 'Leituras', 'Pesquisa', 'Tecnologias', 'Notas'] as const;
+const filters = ['Tudo', 'Leituras', 'Pesquisa', 'Tecnologias'] as const;
 type Filter = typeof filters[number];
 function MuralPage() {
  const [filter, setFilter] = useState<Filter>('Tudo');
