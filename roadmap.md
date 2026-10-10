@@ -7,3 +7,4 @@
 - [x] Trocar as fontes de destaque: Mochiy Pop One (títulos), Fredoka (subtítulo), Nunito (corpo), Patrick Hand (anotações à mão).
 - [x] Atualizar o stack tracker do mural com a lista real de linguagens, banco de dados, cloud, ferramentas e metodologias.
 - [x] Colocar os ícones do LinkedIn e do GitHub nos links de redes sociais (topo, hero e rodapé).
+- [x] Trocar a ilustração da home pela nova (recorte sem fundo, ajustada no desktop, tablet e celular).
