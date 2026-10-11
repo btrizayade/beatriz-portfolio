@@ -8,3 +8,5 @@
 - [x] Atualizar o stack tracker do mural com a lista real de linguagens, banco de dados, cloud, ferramentas e metodologias.
 - [x] Colocar os ícones do LinkedIn e do GitHub nos links de redes sociais (topo, hero e rodapé).
 - [x] Trocar a ilustração da home pela nova (recorte sem fundo, ajustada no desktop, tablet e celular).
+- [x] Adicionar as ilustrações de lâmpada e notebook ao Mural e ao contato.
+- [x] Substituir o conteúdo do Mural por Trajetória & repertório e verificar páginas e leitura móvel.
