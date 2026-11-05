@@ -58,7 +58,7 @@ export function InteractiveHeroArt({ alt }: { alt: string }) {
       const dt = Math.min(0.05, (now - last) / 1000); last = now; const t = now / 1000;
       const rect = el.getBoundingClientRect(); const s = rect.width / W;
       OBJECTS.forEach((o, i) => {
-        const p = phys[i], sd = seeds[i];
+        const p = phys[i]!, sd = seeds[i]!;
         let fx = 0, fy = 0, tr = 0;
         if (mouse.active) {
           const cx = rect.left + (o.x + o.w / 2) * s + p.x, cy = rect.top + (o.y + o.h / 2) * s + p.y;
@@ -86,7 +86,7 @@ export function InteractiveHeroArt({ alt }: { alt: string }) {
           const reach = Math.min(1, d / 220);
           tx = (dx / d) * e.rx * reach; ty = (dy / d) * e.ry * reach;
         }
-        const st = eyes[i]; const k = 1 - Math.exp(-dt * 9);
+        const st = eyes[i]!; const k = 1 - Math.exp(-dt * 9);
         st.x += (tx - st.x) * k; st.y += (ty - st.y) * k;
         const n = (st.x / e.rx) ** 2 + (st.y / e.ry) ** 2; if (n > 1) { const f = 1 / Math.sqrt(n); st.x *= f; st.y *= f; }
         const c = pupilRefs.current[i];
