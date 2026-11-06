@@ -35,7 +35,7 @@ export function LaptopIdeaBurst({ src, alt, width, height }: { src: string; alt:
       const p: Particle = {
         id: ++idRef.current, src: ICONS[k],
         x: rand(60, 74), y: rand(54, 62),
-        dx: rand(-2, 22), dy: rand(-48, -34), r: rand(-18, 18), s: rand(0.85, 1.1), dur: rand(2.6, 3.6),
+        dx: rand(8, 24), dy: rand(-48, -34), r: rand(-18, 18), s: rand(0.85, 1.1), dur: rand(2.6, 3.6),
       };
       return [...cur, p];
     });
