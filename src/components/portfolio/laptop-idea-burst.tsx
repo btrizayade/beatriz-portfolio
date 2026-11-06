@@ -8,8 +8,15 @@ import i6 from '@/assets/laptop-icons/icon-18.png.asset.json';
 import i7 from '@/assets/laptop-icons/icon-19.png.asset.json';
 import i8 from '@/assets/laptop-icons/icon-20.png.asset.json';
 import i9 from '@/assets/laptop-icons/icon-21.png.asset.json';
+import n1 from '@/assets/laptop-icons/icon-new-1.png.asset.json';
+import n2 from '@/assets/laptop-icons/icon-new-2.png.asset.json';
+import n3 from '@/assets/laptop-icons/icon-new-3.png.asset.json';
+import n4 from '@/assets/laptop-icons/icon-new-4.png.asset.json';
+import n5 from '@/assets/laptop-icons/icon-new-5.png.asset.json';
+import n6 from '@/assets/laptop-icons/icon-new-6.png.asset.json';
+import { createIconPicker } from '@/lib/icon-picker';
 
-const ICONS = [i1, i2, i3, i4, i5, i6, i7, i8, i9].map((i) => i.url);
+const ICONS = [i1, i2, i3, i4, i5, i6, i7, i8, i9, n1, n2, n3, n4, n5, n6].map((i) => i.url);
 const MAX = 7; // simultaneous icons
 const COOLDOWN = 900; // ms between bursts
 const rand = (a: number, b: number) => a + Math.random() * (b - a);
@@ -20,17 +27,16 @@ type Particle = { id: number; src: string; x: number; y: number; dx: number; dy:
 export function LaptopIdeaBurst({ src, alt, width, height }: { src: string; alt: string; width: number; height: number }) {
   const [items, setItems] = useState<Particle[]>([]);
   const idRef = useRef(0);
-  const lastIcon = useRef(-1);
+  const picker = useRef(createIconPicker(ICONS.length));
   const hover = useRef(false);
   const lastBurst = useRef(0);
   const reduced = useRef(false);
 
   const spawn = useCallback(() => {
+    // history spans 5 picks, so icons within a 2–3 group are always distinct
+    const k = picker.current.pick(1)[0]!;
     setItems((cur) => {
       if (cur.length >= MAX) return cur;
-      let k = Math.floor(Math.random() * ICONS.length);
-      if (k === lastIcon.current) k = (k + 1) % ICONS.length;
-      lastIcon.current = k;
       // origin: the laptop lid (percent of the frame); drift up-right, away from the face
       const p: Particle = {
         id: ++idRef.current, src: ICONS[k] ?? ICONS[0]!,
