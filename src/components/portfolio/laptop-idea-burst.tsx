@@ -27,17 +27,16 @@ type Particle = { id: number; src: string; x: number; y: number; dx: number; dy:
 export function LaptopIdeaBurst({ src, alt, width, height }: { src: string; alt: string; width: number; height: number }) {
   const [items, setItems] = useState<Particle[]>([]);
   const idRef = useRef(0);
-  const lastIcon = useRef(-1);
+  const picker = useRef(createIconPicker(ICONS.length));
   const hover = useRef(false);
   const lastBurst = useRef(0);
   const reduced = useRef(false);
 
   const spawn = useCallback(() => {
+    // history spans 5 picks, so icons within a 2–3 group are always distinct
+    const k = picker.current.pick(1)[0]!;
     setItems((cur) => {
       if (cur.length >= MAX) return cur;
-      let k = Math.floor(Math.random() * ICONS.length);
-      if (k === lastIcon.current) k = (k + 1) % ICONS.length;
-      lastIcon.current = k;
       // origin: the laptop lid (percent of the frame); drift up-right, away from the face
       const p: Particle = {
         id: ++idRef.current, src: ICONS[k] ?? ICONS[0]!,
