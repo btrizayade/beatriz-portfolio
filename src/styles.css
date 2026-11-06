@@ -34,5 +34,5 @@
 .idea-art-bulb{position:absolute;padding:0;border:0;background:none;cursor:pointer;transform-origin:50% 95%;will-change:transform;border-radius:50%;-webkit-tap-highlight-color:transparent}
 .idea-art-bulb img{position:relative;display:block;width:100%;height:100%;pointer-events:none}
 .idea-art-bulb:focus-visible{outline:2px dashed var(--primary);outline-offset:4px}
-.idea-art-halo{position:absolute;width:130%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);opacity:.45;pointer-events:none;background:radial-gradient(circle,color-mix(in oklab,var(--butter,#F1D47A) 75%,transparent) 0%,color-mix(in oklab,var(--butter,#F1D47A) 25%,transparent) 40%,transparent 70%);will-change:transform,opacity}
+.idea-art-halo{position:absolute;width:130%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);opacity:.45;pointer-events:none;background:radial-gradient(circle,color-mix(in oklab,var(--butter) 75%,transparent) 0%,color-mix(in oklab,var(--butter) 25%,transparent) 40%,transparent 70%);will-change:transform,opacity}
 @media(max-width:640px){.trajectory-portrait .idea-art{height:250px}}
