@@ -8,8 +8,15 @@ import i6 from '@/assets/laptop-icons/icon-18.png.asset.json';
 import i7 from '@/assets/laptop-icons/icon-19.png.asset.json';
 import i8 from '@/assets/laptop-icons/icon-20.png.asset.json';
 import i9 from '@/assets/laptop-icons/icon-21.png.asset.json';
+import n1 from '@/assets/laptop-icons/icon-new-1.png.asset.json';
+import n2 from '@/assets/laptop-icons/icon-new-2.png.asset.json';
+import n3 from '@/assets/laptop-icons/icon-new-3.png.asset.json';
+import n4 from '@/assets/laptop-icons/icon-new-4.png.asset.json';
+import n5 from '@/assets/laptop-icons/icon-new-5.png.asset.json';
+import n6 from '@/assets/laptop-icons/icon-new-6.png.asset.json';
+import { createIconPicker } from '@/lib/icon-picker';
 
-const ICONS = [i1, i2, i3, i4, i5, i6, i7, i8, i9].map((i) => i.url);
+const ICONS = [i1, i2, i3, i4, i5, i6, i7, i8, i9, n1, n2, n3, n4, n5, n6].map((i) => i.url);
 const MAX = 7; // simultaneous icons
 const COOLDOWN = 900; // ms between bursts
 const rand = (a: number, b: number) => a + Math.random() * (b - a);
