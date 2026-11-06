@@ -33,7 +33,7 @@ export function LaptopIdeaBurst({ src, alt, width, height }: { src: string; alt:
       lastIcon.current = k;
       // origin: the laptop lid (percent of the frame); drift up-right, away from the face
       const p: Particle = {
-        id: ++idRef.current, src: ICONS[k],
+        id: ++idRef.current, src: ICONS[k] ?? ICONS[0]!,
         x: rand(60, 74), y: rand(54, 62),
         dx: rand(8, 24), dy: rand(-48, -34), r: rand(-18, 18), s: rand(0.85, 1.1), dur: rand(2.6, 3.6),
       };
