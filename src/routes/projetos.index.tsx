@@ -67,7 +67,7 @@ function ProjectsPage() {
     <nav className="dd-index" aria-label="Projetos nesta página">{dives.map(d => <a key={d.id} href={`#${d.id}`}>{d.num} · {d.name}</a>)}</nav>
     {dives.map(d => <article key={d.id} id={d.id} className="dd-project">
       <header className="dd-head"><div><span className="dd-num">PROJETO {d.num}</span><h2>{d.name}<span className="text-highlight">.</span></h2><p className="dd-concept">{d.concept}</p><p className="dd-lead">{d.lead}</p></div>
-        <div className="dd-links"><a href={d.repo} target="_blank" rel="noreferrer"><span className="flex items-center gap-2"><Github size={15}/>Repositório</span><ArrowUpRight size={15}/></a>{d.demo ? <a href={d.demo} target="_blank" rel="noreferrer">Demonstração online<ArrowUpRight size={15}/></a> : <span className="dd-nodemo">Sem demonstração pública no momento.</span>}</div></header>
+        <div className="dd-links"><a href={d.repo} target="_blank" rel="noreferrer"><span className="flex items-center gap-2"><Github size={15}/>Repositório</span><ArrowUpRight size={15}/></a>{d.demo ? <a href={d.demo} target="_blank" rel="noreferrer">Acesse o BookMind<ArrowUpRight size={15}/></a> : <span className="dd-nodemo">Local-first.</span>}</div></header>
       <Block n="01" label="MOTIVAÇÃO" title="Problema">{d.problem.map(p => <p key={p}>{p}</p>)}</Block>
       <Block n="02" label="PROPOSTA" title="Objetivo">{<p>{d.goal}</p>}</Block>
       <Block n="03" label="IMPLEMENTAÇÃO" title="Funcionalidades"><ol className="dd-features">{d.features.map(f => <li key={f}>{f}</li>)}</ol>{d.highlight && <div className="mt-6">{d.highlight}</div>}</Block>
