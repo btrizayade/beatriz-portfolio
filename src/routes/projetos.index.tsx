@@ -57,14 +57,14 @@ const dives: DeepDive[] = [
 ];
 
 function Block({ n, label, title, children }: { n: string; label: string; title: string; children: ReactNode }) {
-  return <section className="dd-block"><h3><small>{n} / {label}</small>{title}</h3><div>{children}</div></section>;
+  return <section className="dd-block"><h3><small></small>{title}</h3><div>{children}</div></section>;
 }
 
 function ProjectsPage() {
   return <main className="page-container inner-page">
     <h1 className="page-heading">Ideias que viram <em>projetos.</em></h1>
     <p className="page-intro">Como cada projeto foi pensado, estruturado e desenvolvido.<br />Problema, funcionalidades, arquitetura e decisões técnicas.</p>
-    <nav className="dd-index" aria-label="Projetos nesta página">{dives.map(d => <a key={d.id} href={`#${d.id}`}>{d.num} · {d.name}</a>)}</nav>
+    <nav className="dd-index" aria-label="Projetos nesta página">{dives.map(d => <a key={d.id} href={`#${d.id}`}>{d.name}</a>)}</nav>
     {dives.map(d => <article key={d.id} id={d.id} className="dd-project">
       <header className="dd-head"><div><span className="dd-num"></span><h2>{d.name}<span className="text-highlight">.</span></h2><p className="dd-concept">{d.concept}</p><p className="dd-lead">{d.lead}</p></div>
         <div className="dd-links"><a href={d.repo} target="_blank" rel="noreferrer"><span className="flex items-center gap-2"><Github size={15}/>Repositório</span><ArrowUpRight size={15}/></a>{d.demo ? <a href={d.demo} target="_blank" rel="noreferrer">Acesse o BookMind<ArrowUpRight size={15}/></a> : <span className="dd-nodemo">Em desenvolvimento.</span>}</div></header>
