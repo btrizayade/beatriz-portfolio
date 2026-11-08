@@ -66,15 +66,15 @@ function ProjectsPage() {
     <p className="page-intro">Como cada projeto foi pensado, estruturado e desenvolvido.<br />Problema, funcionalidades, arquitetura e decisões técnicas.</p>
     <nav className="dd-index" aria-label="Projetos nesta página">{dives.map(d => <a key={d.id} href={`#${d.id}`}>{d.num} · {d.name}</a>)}</nav>
     {dives.map(d => <article key={d.id} id={d.id} className="dd-project">
-      <header className="dd-head"><div><span className="dd-num">PROJETO {d.num}</span><h2>{d.name}<span className="text-highlight">.</span></h2><p className="dd-concept">{d.concept}</p><p className="dd-lead">{d.lead}</p></div>
-        <div className="dd-links"><a href={d.repo} target="_blank" rel="noreferrer"><span className="flex items-center gap-2"><Github size={15}/>Repositório</span><ArrowUpRight size={15}/></a>{d.demo ? <a href={d.demo} target="_blank" rel="noreferrer">Acesse o BookMind<ArrowUpRight size={15}/></a> : <span className="dd-nodemo">Local-first.</span>}</div></header>
+      <header className="dd-head"><div><span className="dd-num"></span><h2>{d.name}<span className="text-highlight">.</span></h2><p className="dd-concept">{d.concept}</p><p className="dd-lead">{d.lead}</p></div>
+        <div className="dd-links"><a href={d.repo} target="_blank" rel="noreferrer"><span className="flex items-center gap-2"><Github size={15}/>Repositório</span><ArrowUpRight size={15}/></a>{d.demo ? <a href={d.demo} target="_blank" rel="noreferrer">Acesse o BookMind<ArrowUpRight size={15}/></a> : <span className="dd-nodemo">Em desenvolvimento.</span>}</div></header>
       <Block n="01" label="MOTIVAÇÃO" title="Problema">{d.problem.map(p => <p key={p}>{p}</p>)}</Block>
       <Block n="02" label="PROPOSTA" title="Objetivo">{<p>{d.goal}</p>}</Block>
       <Block n="03" label="IMPLEMENTAÇÃO" title="Funcionalidades"><ol className="dd-features">{d.features.map(f => <li key={f}>{f}</li>)}</ol>{d.highlight && <div className="mt-6">{d.highlight}</div>}</Block>
       <Block n="04" label="POR DENTRO" title="Arquitetura"><div className="dd-arch">{d.arch.map((a, i) => <Fragment key={a}><span>{a}</span>{i < d.arch.length - 1 && <i>→</i>}</Fragment>)}</div>{d.archText.map(p => <p key={p}>{p}</p>)}{d.extra}</Block>
       <Block n="05" label="FERRAMENTAS" title="Stack por responsabilidade"><div className="dd-stack">{d.stack.map(s => <div key={s.label}><h4>{s.label}</h4><p>{s.items}</p></div>)}</div></Block>
       <Block n="06" label="ENGENHARIA" title="Desafios e decisões"><p>{d.challenges}</p></Block>
-      {d.next && <Block n="07" label="EVOLUÇÃO" title="Próximos passos"><div className="dd-planned"><b>PLANEJADO · AINDA NÃO IMPLEMENTADO</b><p>{d.next}</p></div></Block>}
+      {d.next && <Block n="07" label="EVOLUÇÃO" title="Próximos passos"><div className="dd-planned"><b>EM DESENVOLVIMENTO</b><p>{d.next}</p></div></Block>}
     </article>)}
   </main>;
 }
