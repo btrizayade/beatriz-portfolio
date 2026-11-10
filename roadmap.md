@@ -10,4 +10,4 @@
 - [x] Trocar a ilustração da home pela nova (recorte sem fundo, ajustada no desktop, tablet e celular).
 - [x] Adicionar as ilustrações de lâmpada e notebook ao Mural e ao contato.
 - [x] Substituir o conteúdo do Mural por Trajetória & repertório e verificar páginas e leitura móvel.
-- [ ] Vídeo de apresentação do portfólio (16:9, 30–45s, MP4) com assets originais.
+- [x] Vídeo de apresentação do portfólio (16:9, 30–45s, MP4) com assets originais.
